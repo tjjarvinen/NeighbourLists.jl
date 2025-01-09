@@ -4,7 +4,6 @@ using Unitful
 
 
 function PairList(ab::AtomsBase.AbstractSystem, cutoff::Unitful.Length; length_unit=unit(cutoff))
-    #cell = ustrip.(length_unit, hcat( cell_vectors(ab)... )' )
     r = map( 1:length(ab) ) do i
         # Need to have SVector here for PairList to work
         # if position does not give SVector
