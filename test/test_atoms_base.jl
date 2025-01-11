@@ -31,6 +31,13 @@ using Unitful
         @test all( r[1] .≈ [0., 0., -2.] )
         id, r = neigs(nlist,3)
         @test length(id) == 0
+
+        isys2d = isolated_system([
+            :H => [ 0., 0.]u"Å",
+            :H => [ 0., 2.]u"Å",
+            :H => [ 10., 0.]u"Å"
+        ])
+        @test_throws ErrorException PairList(isys2d, 5.0u"Å")
     end
 end
 
